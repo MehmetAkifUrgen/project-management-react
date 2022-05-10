@@ -25,7 +25,7 @@ function ProjectList() {
   };
 
   const removeProject = id => {
-    const removedArr = [...projects].filter(todo => todo.id !== id);
+    const removedArr = [...projects].filter(project => project.id !== id);
 
     setProjects(removedArr);
   };
@@ -45,10 +45,10 @@ function ProjectList() {
       <h1>Portal</h1>
       <ProjectForm onSubmit={addProject} />
       <Project
-        todos={projects}
-        completeTodo={completeProject}
-        removeTodo={removeProject}
-        updateTodo={updateProject}
+        projects={projects}
+        completeProject={completeProject}
+        removeProject={removeProject}
+        updateProject={updateProject}
       />
     </>
   );
