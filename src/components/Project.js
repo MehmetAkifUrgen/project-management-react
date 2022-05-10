@@ -21,24 +21,24 @@ function Project({ projects, completeProject, removeProject, updateProject }) {
     return <ProjectForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  // return  projects.map((project, index) => (
-  //   <div
-  //     className={project.isComplete ? 'project-row complete' : 'project-row'}
-  //     key={index}
-  //   >
-  //     <div key={project.id} onClick={() => completeProject(project.id)}>
-  //       {project.text}
-  //     </div>
-  //     <div className='icons'>
-  //       <RiCloseCircleLine
-  //         onClick={() => removeProject(project.id)}
-  //         className='delete-icon' />
-  //       <TiEdit
-  //         onClick={() => setEdit({ id: project.id, value: project.text })}
-  //         className='edit-icon' />
-  //     </div>
-  //   </div>
-  // ));
+  return  projects.map((project, index) => (
+    <div
+      className={project.isComplete ? 'project-row complete' : 'project-row'}
+      key={index}
+    >
+      <div key={project.id} onClick={() => completeProject(project.id)}>
+        {project.text}
+      </div>
+      <div className='icons'>
+        <RiCloseCircleLine
+          onClick={() => removeProject(project.id)}
+          className='delete-icon' />
+        <TiEdit
+          onClick={() => setEdit({ id: project.id, value: project.text })}
+          className='edit-icon' />
+      </div>
+    </div>
+  ));
 }
 
 export default Project;
