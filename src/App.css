@@ -13,6 +13,9 @@ body {
     #3aec49
   );
 }
+
+
+
 .project-app {
   display: flex;
   flex-direction: column;
@@ -31,7 +34,8 @@ h1 {
   color: #fff;
   font-size: 24px;
   padding: 10px 0px;
-  align-items: center;
+  
+  text-align: center;
   
 }
 
@@ -63,7 +67,7 @@ h1 {
 .project-button {
   padding: 16px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   cursor: pointer;
   outline: none;
   background: linear-gradient(
@@ -149,4 +153,28 @@ h1 {
 
 .edit-icon {
   color: #fff;
+}
+
+.modal-container{
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(
+    90deg,
+    #4d0ccf,
+    #3aec49
+  );
+  padding: 10%;
+  border-radius: 5%;
+  
+}
+
+.checkbox-label{
+  color: white;
+}
+
+.addButtonDiv{
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
