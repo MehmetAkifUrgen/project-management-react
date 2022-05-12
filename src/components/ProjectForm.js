@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Modal from 'react-modal';
+import EmplooyeView from './emplooyeView';
 import ProjectModal from './Modal'
 
 function ProjectForm(props) {
@@ -82,7 +83,7 @@ function ProjectForm(props) {
               ref={inputRef}
             /> */}
          <div className='addButtonDiv'>
-         <button onClick={()=> null} className='project-button'>
+         <button onClick={openModal} className='project-button'>
             Add Project
           </button>
          </div>
@@ -96,6 +97,7 @@ function ProjectForm(props) {
         
       >
           <ProjectModal/>
+          
         
       </Modal>
     </form>

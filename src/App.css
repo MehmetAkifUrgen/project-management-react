@@ -29,6 +29,11 @@ body {
   padding-bottom: 32px;
 }
 
+.phone{
+  display: flex;
+  margin: 5px;
+}
+
 h1 {
   margin: 32px 32px;
   color: #fff;
@@ -42,6 +47,10 @@ h1 {
 .complete {
   text-decoration: line-through;
   opacity: 0.4;
+}
+.basic-multi-select{
+  display:flex;
+  margin: 5px;
 }
 
 .project-form {
@@ -90,6 +99,10 @@ h1 {
     rgba(17, 122, 255, 1) 100%
   );
   padding: 16px 22px;
+}
+.input-group{
+  margin: 5px;
+  display: flex;
 }
 
 .project-container {
@@ -177,4 +190,14 @@ h1 {
   justify-content: center;
   align-items: center;
   display: flex;
+  margin: 5px;
+  
+}
+
+.addButtonDiv:hover{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 5px;
+  opacity: 0.6;
 }

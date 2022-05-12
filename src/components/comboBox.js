@@ -5,9 +5,10 @@ export default function SelectBox(props){
                    htmlFor={props.id}>{props.label}</label>
             <select id={props.id}
                     type="text"
-                    name={props.id}
+                    name={props.name}
                     value={props.value}
                     onChange={props.handleChange}
+                    onClick={props.handleClick}
                     className="form-control">
                 {
                     props.options.map( (fullname,id) => (
