@@ -7,7 +7,7 @@ export default class Project {
         projectName:"",
         startDate:""
     }) {
-        this.active = pro.id;
+        this.active = pro.active;
         this.description = pro.description;
         this.endDate = pro.endDate;
         this.offer = pro.offer;

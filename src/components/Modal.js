@@ -10,16 +10,15 @@ import ProjectService from '../service/ProjectService';
 import Project from '../Model/Project';
 import Checkbox from './CheckBox';
 
+
 export default function Modal() {
 
-  //let emplooye=[{value:"john",label:"john"},{value:"tony",label:"tony"},{value:"chris",label:"chris"}];
   const [data, setData] = useState([])
-  // const [emplooyes,setEmplooyes]=useState("select")
   const [phone, setPhone] = useState("")
   const [emplooye, setEmplooye] = useState([])
-  const [startDate, setStartDate] = useState("")
-  const [endDate, setEndDate] = useState("")
   const [active,setActive] = useState(false);
+  
+ 
   let empService = new EmployeeService();
 
 
@@ -31,7 +30,9 @@ export default function Modal() {
 
   useEffect(() => {
     getAllEmployees();
+    
   }, [])
+ 
   
 
   // function handleClick(e){
@@ -45,22 +46,18 @@ export default function Modal() {
   async function getAllEmployees() {
     setEmplooye(await empService.getAll());
   }
+  
   function addProject(event) {
     projectService.addProject({ ...project })
       .then(response => {
-
         let pro = [...project];
         pro.push({ ...project });
         setProject(pro);
-
       });
+      
   }
-  function startDateF(e) {
-    setStartDate(e.target.value)
-  }
-  function endDateF(e) {
-    setEndDate(e.target.value)
-  }
+  
+  
     function handleInputChange(event){
       const {name, value} = event.target;
       
@@ -69,18 +66,14 @@ export default function Modal() {
       newProject[name] = value;
       setProject(newProject);
   }
-  function handleChecbox(event){
-    const {name, value} = event.target;
-    let newValue=!value
-    let newProject = {...project};
-    newProject[name] = newValue;
-    setProject(newProject);
-}
+  
 
   return (
     <div className='modal-container'>
       {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
       {/* <button onClick={closeModal}>close</button> */}
+
+     
 
       <Input id="projectName"
         value={project.projectName}

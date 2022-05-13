@@ -1,7 +1,7 @@
 const BASE_URL =
 "http://localhost:8080/project";
 
-export default class EmployeeService{
+export default class ProjectService{
    
 
 
@@ -14,5 +14,13 @@ export default class EmployeeService{
             },
             body: JSON.stringify(pro)
         }).then(response => response.json())
+    }
+
+    getAllProjects = async () => {
+        return fetch(BASE_URL+"/getAll",{
+            headers: {
+                "Accept": "application/json"
+            }
+        }).then( res => res.json());
     }
 }

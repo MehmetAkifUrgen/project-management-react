@@ -83,7 +83,8 @@ h1 {
   background: linear-gradient(
     90deg,
     #4d0ccf 0%,
-    #3aec49 100%
+    #3aec49b5
+    100%
   );
   color: #fff;
   text-transform: capitalize;
@@ -208,11 +209,17 @@ table{
     #4d0ccf,
     #3aec49
   );
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-bottom: 5px;
+  
+  padding-bottom: 5px;
 }
 th{
+  color: white;
+  
+}
+td{
   color: white;
   
 }
@@ -220,4 +227,11 @@ th{
 .date{
   background-color: white;
   display:flex;
+}
+
+.table-div{
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 15px;
 }
