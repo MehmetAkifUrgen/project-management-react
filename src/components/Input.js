@@ -7,8 +7,8 @@ function Input(props) {
                    htmlFor={props.id}>{props.label}</label>
             <input id={props.id}
                    type={props.type}
-                   pattern={props.pattern}
-                   name={props.name}
+        
+                   name={props.id}
                    value={props.value}
                    onChange={props.handleChange}
                    className="form-control"></input>

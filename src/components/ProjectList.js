@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProjectForm from './ProjectForm';
-import Project from './Project';
+
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -44,12 +44,12 @@ function ProjectList() {
     <>
       <h1>Portal</h1>
       <ProjectForm onSubmit={addProject} />
-      <Project
+      {/* <Project
         projects={projects}
         completeProject={completeProject}
         removeProject={removeProject}
         updateProject={updateProject}
-      />
+      /> */}
     </>
   );
 }

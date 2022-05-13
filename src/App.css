@@ -20,11 +20,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  width: 780px;
+  margin: 128px 100px 0px 100px;
   min-height: 600px;
   background: #161a2b;
   text-align: left;
-  margin: 128px auto;
   border-radius: 10px;
   padding-bottom: 32px;
 }
@@ -55,6 +54,8 @@ h1 {
 
 .project-form {
   margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-input {
@@ -86,6 +87,8 @@ h1 {
   );
   color: #fff;
   text-transform: capitalize;
+  align-self: center;
+  display: flex;
 }
 
 .project-input.edit {
@@ -194,10 +197,27 @@ h1 {
   
 }
 
-.addButtonDiv:hover{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin: 5px;
+.project-button:hover{
+  
   opacity: 0.6;
+}
+
+table{
+  background: linear-gradient(
+    90deg,
+    #4d0ccf,
+    #3aec49
+  );
+  justify-content: start;
+  align-items: center;
+  margin-top: 50px;
+}
+th{
+  color: white;
+  
+}
+
+.date{
+  background-color: white;
+  display:flex;
 }
