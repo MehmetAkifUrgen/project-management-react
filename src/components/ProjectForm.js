@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import ProjectModal from './Modal';
 import ProjectService from '../service/ProjectService';
 import {Button} from 'reactstrap'
+import UpdateModal from './UpdateModal'
+import Project from '../Model/Project';
 
 
 
@@ -11,6 +13,11 @@ function ProjectForm(props) {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [project, setProject] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [selectedProject,setSelectedProject] = useState(new Array());
+  const [id,setId]=useState("");
+  const [proj,setProj]=useState(new Project());
+  
 
   let projectService = new ProjectService();
   function openModal() {
@@ -20,7 +27,7 @@ function ProjectForm(props) {
     getAllProjects();
   }, []);
 
-  console.log(project);
+  
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -33,9 +40,15 @@ function ProjectForm(props) {
   function closeModal() {
     setIsOpen(false);
   }
-  function updateProject(event){
-    projectService.updateEmployee({...project})
-             .then(alert);
+  function closeUpdateModal() {
+    setUpdate(false);
+  }
+  function deleteProjectById(event,id){
+    projectService.deleteProject(id)
+    .then( pro => {
+      setProj(pro);
+      setProject([...project].filter( pro => pro.id !== id));
+  });
 
 }
 
@@ -110,11 +123,16 @@ function ProjectForm(props) {
                                    <td>""</td>
                                    <td>""</td>
                                    <td>""</td>
-                                   <td><Button id='updateProject'
-                        label="Update Employee"
+                                   <td><button type="button" id='updateProject'
+                        
                         className='btn-primary'
-                        onClick={(event) => projectService.updateProject(event, project.projectName, project.startDate, project.endDate, project.active)}
-                        >Update</Button></td>
+                        onClick={(event) => {setSelectedProject(pro); setId(pro.id); setUpdate(true)}}
+                        >Update</button></td>
+                        <td><button type="button" id='updateProject'
+                        
+                        className='btn-danger'
+                        onClick={(event) => deleteProjectById(event, pro.id) }
+                        >Delete</button></td>
                                    {/* <td><Button id="fireEmployee"
                                                buttonTitle="Delete Book"
                                                className="btn-danger"
@@ -135,10 +153,22 @@ function ProjectForm(props) {
         style={customStyles}
 
       >
+       
         <ProjectModal />
+        
 
 
       </Modal>
+      
+        
+        <Modal  isOpen={update}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeUpdateModal}
+        style={customStyles} >
+          <UpdateModal id={id} Project={selectedProject}  /> 
+        </Modal> 
+      
+      
     </form>
   );
 }

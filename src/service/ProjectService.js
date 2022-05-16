@@ -23,14 +23,22 @@ export default class ProjectService{
             }
         }).then( res => res.json());
     }
-    updateProject(pro) {
-        return fetch(BASE_URL,{
+    updateProjectbyId(bk,id) {
+        return fetch(`${BASE_URL+"/updateProject"}/${id}`,{
             method: "PUT",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(pro)
+            body: JSON.stringify(bk)
+        }).then(response => response.json())
+    }
+    deleteProject = async (id) => {
+        return fetch(`${BASE_URL}/${id}`,{
+            method: "DELETE",
+            headers: {
+                "Accept": "application/json"
+            }
         }).then(response => response.json())
     }
 }

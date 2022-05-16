@@ -30,7 +30,7 @@ export default function Modal() {
 
   useEffect(() => {
     getAllEmployees();
-    
+    setActive(false);
   }, [])
  
   
