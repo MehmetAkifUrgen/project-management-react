@@ -23,4 +23,14 @@ export default class ProjectService{
             }
         }).then( res => res.json());
     }
+    updateProject(pro) {
+        return fetch(BASE_URL,{
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(pro)
+        }).then(response => response.json())
+    }
 }

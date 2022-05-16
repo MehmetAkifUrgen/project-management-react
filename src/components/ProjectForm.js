@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import ProjectModal from './Modal';
 import ProjectService from '../service/ProjectService';
+import {Button} from 'reactstrap'
+
+
 
 function ProjectForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
@@ -30,6 +33,11 @@ function ProjectForm(props) {
   function closeModal() {
     setIsOpen(false);
   }
+  function updateProject(event){
+    projectService.updateEmployee({...project})
+             .then(alert);
+
+}
 
   const customStyles = {
     content: {
@@ -81,6 +89,7 @@ function ProjectForm(props) {
             <th>Project Manager</th>
             <th>Team Members</th>
             <th>ProjeTech Lead</th>
+            <th></th>
 
 
           </tr>
@@ -101,6 +110,11 @@ function ProjectForm(props) {
                                    <td>""</td>
                                    <td>""</td>
                                    <td>""</td>
+                                   <td><Button id='updateProject'
+                        label="Update Employee"
+                        className='btn-primary'
+                        onClick={(event) => projectService.updateProject(event, project.projectName, project.startDate, project.endDate, project.active)}
+                        >Update</Button></td>
                                    {/* <td><Button id="fireEmployee"
                                                buttonTitle="Delete Book"
                                                className="btn-danger"

@@ -58,6 +58,7 @@ export default function Modal() {
   }
   
   
+  
     function handleInputChange(event){
       const {name, value} = event.target;
       
@@ -127,10 +128,8 @@ export default function Modal() {
         <button onClick={addProject} className='project-button'>
           Save
         </button>
+        
       </div>
-
-
-
     </div>
   )
 }
