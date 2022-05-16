@@ -17,6 +17,8 @@ function ProjectForm(props) {
   const [selectedProject,setSelectedProject] = useState(new Array());
   const [id,setId]=useState("");
   const [proj,setProj]=useState(new Project());
+  const [newProject,setNewProject]=useState([]);
+  const [query,setQuery]=useState("")
   
 
   let projectService = new ProjectService();
@@ -35,6 +37,7 @@ function ProjectForm(props) {
   }
   async function getAllProjects() {
     setProject(await projectService.getAllProjects());
+    setNewProject(await projectService.getAllProjects());
   }
 
   function closeModal() {
@@ -51,6 +54,32 @@ function ProjectForm(props) {
   });
 
 }
+
+const handleSearch = (event) => {
+  
+  setQuery(event.target.value)
+  let value=event.target.value
+  //console.log(value)
+  const formattedQuery = value.toLowerCase();
+  const filteredData = newProject.filter((hero)=> {
+    
+      return contains(hero, formattedQuery);
+  }
+  );
+  //console.log(filteredData);
+  setProject(filteredData);
+  setQuery(event.target.value);
+};
+
+const contains = ({ projectName, name }, query) => {
+  
+  console.log(projectName);
+  if (projectName.toLowerCase().includes(query)) {
+    return true;
+  }
+
+  return false;
+};
 
   const customStyles = {
     content: {
@@ -84,14 +113,13 @@ function ProjectForm(props) {
     <form onSubmit={handleSubmit} className='project-form'>
 
 
-      <div className='addButtonDiv'>
-        <button onClick={openModal} className='project-button'>
-          Add Project
-        </button>
+      <div>
+        <input value={query} type="text" placeholder='projectName' onChange={handleSearch}  ></input>
       </div>
       <div className='table-div'>
 
       <table ite  className='table'>
+        <div ></div>
         <thead >
           <tr>
             <th>Project Name</th>
@@ -107,7 +135,7 @@ function ProjectForm(props) {
 
           </tr>
         </thead>
-        <tbody >
+        <tbody  >
                    {
                        project.map( (pro,index) => (
                                <tr key={pro.id}>
@@ -143,6 +171,13 @@ function ProjectForm(props) {
                    }
                    </tbody>
       </table>
+      
+      </div>
+
+      <div className='addButtonDiv'>
+        <button onClick={openModal} className='project-button'>
+          Add Project
+        </button>
       </div>
 
 

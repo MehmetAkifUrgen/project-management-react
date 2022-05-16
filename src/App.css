@@ -88,7 +88,7 @@ h1 {
   );
   color: #fff;
   text-transform: capitalize;
-  align-self: center;
+  
   display: flex;
 }
 
@@ -192,11 +192,11 @@ h1 {
 
 
 .addButtonDiv{
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   display: flex;
-  margin: 5px;
-  
+  margin: 15px;
+  margin-top: 30px;
 }
 
 .project-button:hover{
@@ -213,7 +213,6 @@ table{
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
-  
   padding-bottom: 5px;
 }
 th{
@@ -233,6 +232,65 @@ td{
 .table-div{
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin: 10px;
   padding: 15px;
+  overflow: scroll;
+  max-height: 400px;
+  overflow-x:hidden;
+  
+}
+
+.table-div::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table-div::-webkit-scrollbar-track {
+  background:#f1f1f1;
+}
+.table-div::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    #4d0ccf,
+    #3aec49
+  );
+}
+
+.table-div::-webkit-scrollbar-thumb:hover {
+  background:#555;
+}
+
+.btn-danger{
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    darkred 0%,
+    red
+    100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+  
+  display: flex;
+}
+
+.btn-primary{
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    blue 0%,
+    turquoise
+    100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+  
+  display: flex;
 }
