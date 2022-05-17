@@ -5,6 +5,7 @@ import EmplooyeView from './emplooyeView'
 import Select from 'react-select';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import CustomerService from '../service/CustomerService';
 import EmployeeService from '../service/EmployeeService';
 import ProjectService from '../service/ProjectService';
 import Project from '../Model/Project';
@@ -15,13 +16,14 @@ export default function Modal() {
 
   const [data, setData] = useState([])
   const [phone, setPhone] = useState("")
-  const [emplooye, setEmplooye] = useState([])
+  const [customer,setCustomer] = useState([])
   const [active,setActive] = useState(false);
+  const [employee,setEmployee] = useState([])
+ 
   
  
+  let customerService = new CustomerService();
   let empService = new EmployeeService();
-
-
   let projectService = new ProjectService();
 
 
@@ -29,6 +31,7 @@ export default function Modal() {
     useState(new Project());
 
   useEffect(() => {
+    getAllCustomers();
     getAllEmployees();
     setActive(false);
   }, [])
@@ -43,8 +46,11 @@ export default function Modal() {
 
   //   console.log(data)
   // }
+  async function getAllCustomers() {
+    setCustomer(await customerService.getAllCustomers());
+  }
   async function getAllEmployees() {
-    setEmplooye(await empService.getAll());
+    setEmployee(await empService.getAllEmployees());
   }
   
   function addProject(event) {
@@ -82,7 +88,7 @@ export default function Modal() {
         type="text"
         label="Project Name">
       </Input>
-      <ComboBox options={["ali", "ahmet"]} label="Customers" />
+      <ComboBox options={customer} label="Customers" />
       <Checkbox id="active" 
                               handleChange={()=> setActive(!active)}
                               value={active}
@@ -95,12 +101,20 @@ export default function Modal() {
       <Input value={project.startDate} label="Start Date" type="date" id="startDate" handleChange={handleInputChange} />
       <Input value={project.endDate} label="Start Date" type="date" id="endDate" handleChange={handleInputChange} />
       {/* <DatePicker className="date" onChange={d=> setEndDate(d)} value={endDate} /> */}
-      <ComboBox options={["kerem", "akif"]} label="Project Manager" />
+      <ComboBox options={customer.map((item, index)=>{
+        return{
+          value: item.id,
+          label: item.name
+        }
+
+      })}
+
+       label="Project Manager" />
       <Select
 
         isMulti
         name="emplooyes"
-        options={emplooye.map((item, index) => {
+        options={employee.map((item, index) => {
           return {
             value: item.id,
             label: item.name

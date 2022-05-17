@@ -5,7 +5,7 @@ export default class EmployeeService{
    
 
 
-    getAll = async () => {
+    getAllEmployees = async () => {
         return fetch(BASE_URL+"/getAll",{
             headers: {
                 "Accept": "application/json"
