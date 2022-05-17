@@ -82,7 +82,18 @@ export default function Modal() {
         type="text"
         label="Project Name">
       </Input>
+<<<<<<< Updated upstream
       <ComboBox options={["ali", "ahmet"]} label="Customers" />
+=======
+      <ComboBox options={customer.map((item, index)=>{
+        return{
+          value: item.id,
+          label: item.name
+        }
+
+      })} 
+      label="Customers" />
+>>>>>>> Stashed changes
       <Checkbox id="active" 
                               handleChange={()=> setActive(!active)}
                               value={active}

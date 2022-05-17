@@ -1,5 +1,5 @@
 const BASE_URL =
-"http://localhost:8080/employee";
+"http://localhost:6060/employee";
 
 export default class EmployeeService{
    

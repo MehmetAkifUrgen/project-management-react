@@ -1,5 +1,5 @@
 const BASE_URL =
-"http://localhost:8080/project";
+"http://localhost:6060/project";
 
 export default class ProjectService{
    
