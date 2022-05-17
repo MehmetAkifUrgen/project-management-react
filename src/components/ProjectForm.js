@@ -31,7 +31,7 @@ function ProjectForm(props) {
     getAllProjects();
   }, []);
 
-  const customerArray = ["ali", "ahmet"];
+  
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -174,7 +174,7 @@ const containsCustomer = ({ customerName, name }, query) => {
                                            setId(emp.id)
                                    }}>{emp.id}</td> */}
                                    <td>{pro.projectName}</td>
-                                   <td>{customerArray}</td>
+                                   <td>{Math.random}</td>
                                    <td>{pro.active ? "Active" : "Not Active"}</td>
                                    <td>{pro.startDate}</td>
                                    <td>{pro.endDate}</td>
