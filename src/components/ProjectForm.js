@@ -31,7 +31,7 @@ function ProjectForm(props) {
     getAllProjects();
   }, []);
 
-  const customerArray = ["kerem", "akif"];
+  const customerArray = ["ali", "ahmet"];
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
