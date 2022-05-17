@@ -5,6 +5,7 @@ import ProjectService from '../service/ProjectService';
 import {Button} from 'reactstrap'
 import UpdateModal from './UpdateModal'
 import Project from '../Model/Project';
+import CustomerService from '../service/CustomerService';
 
 
 
@@ -19,11 +20,16 @@ function ProjectForm(props) {
   const [proj,setProj]=useState(new Project());
   const [newProject,setNewProject]=useState([]);
   const [query,setQuery]=useState("")
+  const [customer, setCustomer] = useState([]);
+  const [newCustomer,setNewCustomer] = useState([]);
   
   const [customerQuery,setCustomerQuery]=useState("")
   
 
   let projectService = new ProjectService();
+  let customerService = new CustomerService();
+
+
   function openModal() {
     setIsOpen(true);
   }
@@ -40,6 +46,12 @@ function ProjectForm(props) {
   async function getAllProjects() {
     setProject(await projectService.getAllProjects());
     setNewProject(await projectService.getAllProjects());
+  }
+
+  async function getAllCustomers(){
+    setCustomer(await customerService.getAllCustomers());
+    setNewCustomer(await customerService.getAllCustomers());
+
   }
 
   function closeModal() {
@@ -161,20 +173,21 @@ const containsCustomer = ({ customerName, name }, query) => {
             <th>Team Members</th>
             <th>ProjeTech Lead</th>
             <th></th>
-
-
+           
           </tr>
         </thead>
         <tbody  >
                    {
                        project.map( (pro,index) => (
+                         
+                          
                                <tr key={pro.id}>
                                    {/* <td onMouseOver={(event) => {
                                        setBook(emp),
                                            setId(emp.id)
                                    }}>{emp.id}</td> */}
                                    <td>{pro.projectName}</td>
-                                   <td>{Math.random}</td>
+                                   <td>{customer.customerName}</td>
                                    <td>{pro.active ? "Active" : "Not Active"}</td>
                                    <td>{pro.startDate}</td>
                                    <td>{pro.endDate}</td>
@@ -182,7 +195,7 @@ const containsCustomer = ({ customerName, name }, query) => {
                                    <td>""</td>
                                    <td>""</td>
                                    <td><button type="button" id='updateProject'
-                        
+                       
                         className='btn-primary'
                         onClick={(event) => {setSelectedProject(pro); setId(pro.id); setUpdate(true)}}
                         >Update</button></td>
@@ -196,8 +209,8 @@ const containsCustomer = ({ customerName, name }, query) => {
                                                className="btn-danger"
                                                onClick={(event) => deleteBookById(event, emp.id) }></Button></td> */}
                                </tr>
-                           )
-                       )
+                            )
+                      ) 
                    }
                    </tbody>
       </table>
