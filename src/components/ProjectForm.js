@@ -70,11 +70,36 @@ const handleSearch = (event) => {
   setProject(filteredData);
   setQuery(event.target.value);
 };
+const handleSearchForCustomer = (event) => {
+  
+  setQuery(event.target.customerName)
+  let customerName=event.target.customerName
+  //console.log(value)
+  const formattedQuery = customerName.toLowerCase();
+  const filteredData = newProject.filter((hero)=> {
+    
+      return contains(hero, formattedQuery);
+  }
+  );
+  //console.log(filteredData);
+  setProject(filteredData);
+  setQuery(event.target.customerName);
+};
 
 const contains = ({ projectName, name }, query) => {
   
   console.log(projectName);
   if (projectName.toLowerCase().includes(query)) {
+    return true;
+  }
+
+  return false;
+};
+
+const containsCustomer = ({ customerName, name }, query) => {
+  
+  console.log(customerName);
+  if (customerName.toLowerCase().includes(query)) {
     return true;
   }
 
@@ -114,7 +139,10 @@ const contains = ({ projectName, name }, query) => {
 
 
       <div>
-        <input value={query} type="text" placeholder='projectName' onChange={handleSearch}  ></input>
+        <input className="search-textbox" value={query} type="text" placeholder='Enter a Project Name' onChange={handleSearch}  ></input>
+      </div>
+      <div>
+        <input className="search-textbox" value={query} type="text" placeholder='Enter a Customer Name' onChange={handleSearch}  ></input>
       </div>
       <div className='table-div'>
 

@@ -193,10 +193,11 @@ h1 {
 
 .addButtonDiv{
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex;
+  vertical-align: bottom;
   display: flex;
-  margin: 15px;
-  margin-top: 30px;
+  margin: 250px 50px 0px 15px;
+  
 }
 
 .project-button:hover{
@@ -237,6 +238,7 @@ td{
   overflow: scroll;
   max-height: 400px;
   overflow-x:hidden;
+ 
   
 }
 
@@ -267,8 +269,8 @@ td{
   outline: none;
   background: linear-gradient(
     90deg,
-    darkred 0%,
-    red
+    red 0%,
+    rgb(255, 94, 0)
     100%
   );
   color: #fff;
@@ -293,4 +295,11 @@ td{
   text-transform: capitalize;
   
   display: flex;
+}
+
+.search-textbox{
+  display: flex;
+  margin: 10px 0px 0px 20px;
+  border-radius: 5px;
+  
 }
