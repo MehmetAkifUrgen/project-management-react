@@ -20,6 +20,8 @@ function ProjectForm(props) {
   const [newProject,setNewProject]=useState([]);
   const [query,setQuery]=useState("")
   
+  const [customerQuery,setCustomerQuery]=useState("")
+  
 
   let projectService = new ProjectService();
   function openModal() {
@@ -29,7 +31,7 @@ function ProjectForm(props) {
     getAllProjects();
   }, []);
 
-  
+  const customerArray = ["kerem", "akif"];
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -68,7 +70,7 @@ const handleSearch = (event) => {
   );
   //console.log(filteredData);
   setProject(filteredData);
-  setQuery(event.target.value);
+  setCustomerQuery(event.target.value);
 };
 const handleSearchForCustomer = (event) => {
   
@@ -78,7 +80,7 @@ const handleSearchForCustomer = (event) => {
   const formattedQuery = customerName.toLowerCase();
   const filteredData = newProject.filter((hero)=> {
     
-      return contains(hero, formattedQuery);
+      return containsCustomer(hero, formattedQuery);
   }
   );
   //console.log(filteredData);
@@ -142,7 +144,7 @@ const containsCustomer = ({ customerName, name }, query) => {
         <input className="search-textbox" value={query} type="text" placeholder='Enter a Project Name' onChange={handleSearch}  ></input>
       </div>
       <div>
-        <input className="search-textbox" value={query} type="text" placeholder='Enter a Customer Name' onChange={handleSearch}  ></input>
+        <input className="search-textbox" value={customerQuery} type="text" placeholder='Enter a Customer Name' onChange={handleSearchForCustomer}  ></input>
       </div>
       <div className='table-div'>
 
@@ -172,7 +174,7 @@ const containsCustomer = ({ customerName, name }, query) => {
                                            setId(emp.id)
                                    }}>{emp.id}</td> */}
                                    <td>{pro.projectName}</td>
-                                   <td>""</td>
+                                   <td>{customerArray}</td>
                                    <td>{pro.active ? "Active" : "Not Active"}</td>
                                    <td>{pro.startDate}</td>
                                    <td>{pro.endDate}</td>
