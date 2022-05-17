@@ -35,6 +35,8 @@ function ProjectForm(props) {
   }
   useEffect(() => {
     getAllProjects();
+    getAllCustomers();
+
   }, []);
 
   
@@ -86,18 +88,18 @@ const handleSearch = (event) => {
 };
 const handleSearchForCustomer = (event) => {
   
-  setQuery(event.target.customerName)
-  let customerName=event.target.customerName
+  setQuery(event.target.value)
+  let value=event.target.value
   //console.log(value)
-  const formattedQuery = customerName.toLowerCase();
-  const filteredData = newProject.filter((hero)=> {
+  const formattedQuery = value.toLowerCase();
+  const filteredData = newCustomer.filter((hero)=> {
     
       return containsCustomer(hero, formattedQuery);
   }
   );
   //console.log(filteredData);
   setProject(filteredData);
-  setQuery(event.target.customerName);
+  setQuery(event.target.value);
 };
 
 const contains = ({ projectName, name }, query) => {
