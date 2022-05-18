@@ -27,7 +27,12 @@ function ProjectForm(props) {
   
 
   let projectService = new ProjectService();
+<<<<<<< Updated upstream
   let customerService = new CustomerService();
+=======
+  let customerService = new customerService();
+
+>>>>>>> Stashed changes
 
 
   function openModal() {
@@ -84,7 +89,7 @@ const handleSearch = (event) => {
   );
   //console.log(filteredData);
   setProject(filteredData);
-  setCustomerQuery(event.target.value);
+  setQuery(event.target.value);
 };
 const handleSearchForCustomer = (event) => {
   
@@ -99,7 +104,11 @@ const handleSearchForCustomer = (event) => {
   );
   //console.log(filteredData);
   setProject(filteredData);
+<<<<<<< Updated upstream
   setQuery(event.target.value);
+=======
+  setCustomerQuery(event.target.customerName);
+>>>>>>> Stashed changes
 };
 
 const contains = ({ projectName, name }, query) => {
@@ -189,7 +198,11 @@ const containsCustomer = ({ customerName, name }, query) => {
                                            setId(emp.id)
                                    }}>{emp.id}</td> */}
                                    <td>{pro.projectName}</td>
+<<<<<<< Updated upstream
                                    <td>{customer.customerName}</td>
+=======
+                                   <td>""</td>
+>>>>>>> Stashed changes
                                    <td>{pro.active ? "Active" : "Not Active"}</td>
                                    <td>{pro.startDate}</td>
                                    <td>{pro.endDate}</td>
