@@ -10,15 +10,19 @@ import EmployeeService from '../service/EmployeeService';
 import ProjectService from '../service/ProjectService';
 import Project from '../Model/Project';
 import Checkbox from './CheckBox';
+import { Textbox } from 'react-inputs-validation';
+
 
 
 export default function Modal() {
 
-  const [data, setData] = useState([])
-  const [phone, setPhone] = useState("")
-  const [customer,setCustomer] = useState([])
+  const [data, setData] = useState([]);
+  const [phone, setPhone] = useState("");
+  const [customer,setCustomer] = useState([]);
   const [active,setActive] = useState(false);
-  const [employee,setEmployee] = useState([])
+  const [employee,setEmployee] = useState([]);
+  const [err, setErr] = useState(false);
+  
  
   
  
@@ -31,9 +35,10 @@ export default function Modal() {
     useState(new Project());
 
   useEffect(() => {
-    getAllCustomers();
+    // getAllCustomers();
     getAllEmployees();
     setActive(false);
+    setErr(false);
   }, [])
  
   
@@ -56,10 +61,18 @@ export default function Modal() {
   function addProject(event) {
     projectService.addProject({ ...project })
       .then(response => {
-        let pro = [...project];
-        pro.push({ ...project });
-        setProject(pro);
-      });
+        // let pro = [...project];
+        // pro.push({ ...project });
+        // setProject(pro);
+        console.log(response);
+        if(response.status===500 || response.status===404 ){
+          setErr(true);
+        }
+       else{
+        alert("project added.")
+       }
+      })
+      
       
   }
   
@@ -88,6 +101,8 @@ export default function Modal() {
         type="text"
         label="Project Name">
       </Input>
+      {project.projectName.length ==0 && err  ? 
+        <span style={{color:'red'}}>*Proje adı boş olamaz</span>:null}
       <ComboBox options={customer} label="Customers" />
       <Checkbox id="active" 
                               handleChange={()=> setActive(!active)}

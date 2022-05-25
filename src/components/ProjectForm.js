@@ -37,13 +37,14 @@ function ProjectForm(props) {
     getAllProjects();
     // getAllCustomers();
 
-  }, []);
+  }, [afterOpenModal]);
 
   
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
+    
   }
   async function getAllProjects() {
     setProject(await projectService.getAllProjects());
