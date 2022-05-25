@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import ProjectModal from './Modal';
 import ProjectService from '../service/ProjectService';
-import {Button} from 'reactstrap'
 import UpdateModal from './UpdateModal'
 import Project from '../Model/Project';
 import CustomerService from '../service/CustomerService';
@@ -27,12 +26,8 @@ function ProjectForm(props) {
   
 
   let projectService = new ProjectService();
-<<<<<<< Updated upstream
   let customerService = new CustomerService();
-=======
-  let customerService = new customerService();
 
->>>>>>> Stashed changes
 
 
   function openModal() {
@@ -40,7 +35,7 @@ function ProjectForm(props) {
   }
   useEffect(() => {
     getAllProjects();
-    getAllCustomers();
+    // getAllCustomers();
 
   }, []);
 
@@ -87,29 +82,22 @@ const handleSearch = (event) => {
       return contains(hero, formattedQuery);
   }
   );
-  //console.log(filteredData);
   setProject(filteredData);
   setQuery(event.target.value);
 };
-const handleSearchForCustomer = (event) => {
+// const handleSearchForCustomer = (event) => {
   
-  setQuery(event.target.value)
-  let value=event.target.value
-  //console.log(value)
-  const formattedQuery = value.toLowerCase();
-  const filteredData = newCustomer.filter((hero)=> {
+//   setQuery(event.target.value)
+//   let value=event.target.value
+//   const formattedQuery = value.toLowerCase();
+//   const filteredData = newCustomer.filter((hero)=> {
     
-      return containsCustomer(hero, formattedQuery);
-  }
-  );
-  //console.log(filteredData);
-  setProject(filteredData);
-<<<<<<< Updated upstream
-  setQuery(event.target.value);
-=======
-  setCustomerQuery(event.target.customerName);
->>>>>>> Stashed changes
-};
+//       return containsCustomer(hero, formattedQuery);
+//   }
+//   );
+//   setProject(filteredData);
+//   setCustomerQuery(event.target.customerName);
+// };
 
 const contains = ({ projectName, name }, query) => {
   
@@ -117,19 +105,20 @@ const contains = ({ projectName, name }, query) => {
   if (projectName.toLowerCase().includes(query)) {
     return true;
   }
-
-  return false;
-};
-
-const containsCustomer = ({ customerName, name }, query) => {
   
-  console.log(customerName);
-  if (customerName.toLowerCase().includes(query)) {
-    return true;
-  }
 
   return false;
 };
+
+// const containsCustomer = ({ customerName, name }, query) => {
+  
+//   console.log(customerName);
+//   if (customerName.toLowerCase().includes(query)) {
+//     return true;
+//   }
+
+//   return false;
+// };
 
   const customStyles = {
     content: {
@@ -143,7 +132,8 @@ const containsCustomer = ({ customerName, name }, query) => {
         '90deg',
         '#4d0ccf',
         '#3aec49'
-      )`
+      )`,
+      border:'0px'
     },
   };
 
@@ -157,6 +147,7 @@ const containsCustomer = ({ customerName, name }, query) => {
       text: input
     });
     setInput('');
+    e.preventDefault();
   };
 
   return (
@@ -166,9 +157,9 @@ const containsCustomer = ({ customerName, name }, query) => {
       <div>
         <input className="search-textbox" value={query} type="text" placeholder='Enter a Project Name' onChange={handleSearch}  ></input>
       </div>
-      <div>
+      {/* <div>
         <input className="search-textbox" value={customerQuery} type="text" placeholder='Enter a Customer Name' onChange={handleSearchForCustomer}  ></input>
-      </div>
+      </div> */}
       <div className='table-div'>
 
       <table ite  className='table'>
@@ -198,11 +189,7 @@ const containsCustomer = ({ customerName, name }, query) => {
                                            setId(emp.id)
                                    }}>{emp.id}</td> */}
                                    <td>{pro.projectName}</td>
-<<<<<<< Updated upstream
-                                   <td>{customer.customerName}</td>
-=======
                                    <td>""</td>
->>>>>>> Stashed changes
                                    <td>{pro.active ? "Active" : "Not Active"}</td>
                                    <td>{pro.startDate}</td>
                                    <td>{pro.endDate}</td>
