@@ -9,9 +9,8 @@ import CustomerService from '../service/CustomerService';
 
 
 function ProjectForm(props) {
-  const [input, setInput] = useState(props.edit ? props.edit.value : '');
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] =useState(false);
   const [project, setProject] = useState([]);
   const [update, setUpdate] = useState(false);
   const [selectedProject,setSelectedProject] = useState(new Array());
@@ -36,7 +35,7 @@ function ProjectForm(props) {
   useEffect(() => {
     getAllProjects();
     // getAllCustomers();
-
+    setIsOpen(false);
   }, []);
  
   
@@ -59,9 +58,11 @@ function ProjectForm(props) {
 
   function closeModal() {
     setIsOpen(false);
+    getAllProjects();
   }
   function closeUpdateModal() {
     setUpdate(false);
+    getAllProjects();
   }
   function deleteProjectById(event,id){
     projectService.deleteProject(id)
@@ -140,19 +141,19 @@ const contains = ({ projectName, name }, query) => {
 
 
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  // const handleSubmit = e => {
+  //   e.preventDefault();
 
-    props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: input
-    });
-    setInput('');
-    e.preventDefault();
-  };
+  //   props.onSubmit({
+  //     id: Math.floor(Math.random() * 10000),
+  //     text: input
+  //   });
+  //   setInput('');
+  //   e.preventDefault();
+  // };
 
   return (
-    <form onSubmit={handleSubmit} className='project-form'>
+    <div  className='project-form'>
 
 
       <div>
@@ -232,7 +233,7 @@ const contains = ({ projectName, name }, query) => {
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-
+        ariaHideApp={false}
       >
        
         <ProjectModal />
@@ -250,7 +251,7 @@ const contains = ({ projectName, name }, query) => {
         </Modal> 
       
       
-    </form>
+    </div>
   );
 }
 
