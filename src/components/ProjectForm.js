@@ -37,8 +37,8 @@ function ProjectForm(props) {
     getAllProjects();
     // getAllCustomers();
 
-  }, [afterOpenModal]);
-
+  }, []);
+ 
   
 
   function afterOpenModal() {

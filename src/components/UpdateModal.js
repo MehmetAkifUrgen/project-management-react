@@ -63,7 +63,7 @@ export default function Modal(props) {
         type="text"
         label="Offer"></Input>
       <Input value={updateProject.startDate} label="Start Date" type="date" id="startDate" handleChange={handleInputChange} />
-      <Input value={updateProject.endDate} label="Start Date" type="date" id="endDate" handleChange={handleInputChange} />
+      <Input value={updateProject.endDate} label="End Date" type="date" id="endDate" handleChange={handleInputChange} />
       {/* <DatePicker className="date" onChange={d=> setEndDate(d)} value={endDate} /> */}
       {/* <ComboBox options={["kerem", "akif"]} label="Project Manager" /> */}
       {/* <Select
