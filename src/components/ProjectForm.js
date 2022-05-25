@@ -42,7 +42,7 @@ function ProjectForm(props) {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    
     
   }
   async function getAllProjects() {
@@ -69,6 +69,7 @@ function ProjectForm(props) {
     .then( pro => {
       setProj(pro);
       setProject([...project].filter( pro => pro.id !== id));
+      getAllProjects();
   });
 
 }
@@ -164,8 +165,8 @@ const contains = ({ projectName, name }, query) => {
       </div> */}
       <div className='table-div'>
 
-      <table ite  className='table'>
-        <div ></div>
+      <table className='table'>
+        
         <thead >
           <tr>
             <th>Project Name</th>

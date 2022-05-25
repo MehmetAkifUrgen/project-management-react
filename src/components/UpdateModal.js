@@ -28,6 +28,7 @@ export default function Modal(props) {
         .then( pro => {
             setUpdateProject(pro);
             setProj([...proj]);
+            console.log(pro);
         });
     
     }
